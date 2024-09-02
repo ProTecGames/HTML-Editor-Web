@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML Editor</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js" integrity="sha512-8z8AU7AYkNzYy8O8lnIxNFwqQKpPPjNLQxQbJZwlruCRSHJ5gIjQqODqZ8VDbAeTRwXH5r0zHVUjwlKlW7CmZw==" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,7 +35,7 @@
     </a>
   </div>
   <div class="editor-container">
-    <textarea id="code" class="code-editor" placeholder="Write your code here..."></textarea>
+    <div id="editor" class="code-editor"></div>
   </div>
   <script src="script.js"></script>
 </body>

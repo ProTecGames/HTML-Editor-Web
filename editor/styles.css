@@ -1,66 +1,103 @@
 /* Reset default margin and padding */
 body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /* Set default background color and text color for dark theme */
 body.dark-mode {
-  background-color: #1a1a1a;
-  color: #fff;
+    background-color: #1a1a1a;
+    color: #fff;
 }
 
 /* Toolbar styles */
 .toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #949494;
-  color: #fff;
-  padding: 8px;
-  max-width: 100%; /* Ensure toolbar fits the screen */
-  overflow-x: auto; /* Enable horizontal scrolling if needed */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #949494;
+    color: #fff;
+    padding: 8px;
+    max-width: 100%; /* Ensure toolbar fits the screen */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
 }
 
 .material-button {
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  white-space: nowrap; /* Prevent text wrapping */
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 .material-button:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
 
 .material-icon {
-  margin-right: 5px;
-  font-size: 18px; /* Adjust icon size */
+    margin-right: 5px;
+    font-size: 18px; /* Adjust icon size */
 }
 
 .material-text {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px; /* Adjust text size */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; /* Adjust text size */
 }
 
 /* Editor container styles */
 .editor-container {
-  margin-top: 20px;
+    margin-top: 20px;
+    height: calc(100vh - 100px); /* Adjust height to fill available space */
 }
 
-.code-editor {
-  width: 100%;
-  height: calc(100vh - 100px);
-  resize: vertical;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 16px; /* Adjust font size for code editor */
+#editor {
+    height: 100%;
+    width: 100%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px; /* Adjust font size for code editor */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* Additional styles for the Ace editor container */
+    line-height: 1.6; /* Adjust line height */
+}
+
+/* Dark mode adjustments */
+body.dark-mode .toolbar {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .material-button {
+    border-color: #555;
+}
+
+body.dark-mode .material-button:hover {
+    background-color: #444;
+}
+
+body.dark-mode #editor {
+    background-color: #2b2b2b; /* Dark background for Ace Editor */
+    color: #f8f8f2; /* Light text for Ace Editor */
+    border-color: #555;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .material-button {
+        font-size: 12px;
+        padding: 3px;
+    }
+
+    .material-icon {
+        font-size: 16px;
+    }
+
+    .editor-container {
+        height: calc(100vh - 150px); /* Reduce height for smaller screens */
+    }
 }

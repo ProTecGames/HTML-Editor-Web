@@ -1,43 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML Editor</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js" integrity="sha512-8z8AU7AYkNzYy8O8lnIxNFwqQKpPPjNLQxQbJZwlruCRSHJ5gIjQqODqZ8VDbAeTRwXH5r0zHVUjwlKlW7CmZw==" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-
-<body class="light-mode">
-  <div class="toolbar">
-    <button id="runBtn" class="material-button">
-      <span class="material-icon"></span>
-      <span class="material-text">Run</span>
-    </button>
-    <button id="saveBtn" class="material-button">
-      <span class="material-icon"></span>
-      <span class="material-text">Save</span>
-    </button>
-    <button id="undoBtn" class="material-button">
-      <span class="material-icon"></span>
-      <span class="material-text">Undo</span>
-    </button>
-    <button id="redoBtn" class="material-button">
-      <span class="material-icon"></span>
-      <span class="material-text">Redo</span>
-    </button>
-    <a href="https://html-editor-pro.vercel.app/pages/download.html" download class="material-button">
-      <span class="material-icon"></span>
-      <span class="material-text">Android App</span>
-    </a>
-  </div>
-  <div class="editor-container">
-    <div id="editor" class="code-editor"></div>
-  </div>
-  <script src="script.js"></script>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>HTML Editor</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Heroicons (for icons in buttons) -->
+    <script src="https://unpkg.com/heroicons@2.0.13/dist/heroicons.js"></script>
+    <!-- Monaco Editor Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.0/min/vs/loader.js"></script>
+    <script>
+      require.config({
+        paths: {
+          vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.0/min/vs",
+        },
+      });
+      window.MonacoEnvironment = {
+        getWorkerUrl: function (workerId, label) {
+          return (
+            "data:text/javascript;charset=utf-8," +
+            encodeURIComponent(`
+          self.MonacoEnvironment = {
+            baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.0/min/'
+          };
+          importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.0/min/vs/base/worker/workerMain.js');
+        `)
+          );
+        },
+      };
+    </script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-gray-900 text-gray-100">
+    <div class="flex flex-col h-screen w-screen overflow-hidden">
+      <!-- Toolbar (top bar similar to VS Code) -->
+      <div class="flex items-center bg-gray-800 px-4 py-2 border-b border-gray-700">
+        <button
+          id="runBtn"
+          class="flex items-center space-x-1 bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+            />
+          </svg>
+          <span>Run</span>
+        </button>
+        <button
+          id="saveBtn"
+          class="flex items-center space-x-1 bg-green-600 hover:bg-green-700 px-3 py-1 rounded ml-2"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+          <span>Save</span>
+        </button>
+        <button
+          id="undoBtn"
+          class="flex items-center space-x-1 bg-yellow-600 hover:bg-yellow-700 px-3 py-1 rounded ml-2"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 19V6l-7 7"
+            />
+          </svg>
+          <span>Undo</span>
+        </button>
+        <button
+          id="redoBtn"
+          class="flex items-center space-x-1 bg-yellow-600 hover:bg-yellow-700 px-3 py-1 rounded ml-2"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 5v13l7-7"
+            />
+          </svg>
+          <span>Redo</span>
+        </button>
+        <a
+          href="https://html-editor-pro.vercel.app/pages/download.html"
+          download
+          class="flex items-center space-x-1 bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded ml-2"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v16m8-8H4"
+            />
+          </svg>
+          <span>Android App</span>
+        </a>
+      </div>
+      <!-- Editor Container -->
+      <div class="flex-1 overflow-hidden">
+        <div id="editor" class="w-full h-full"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

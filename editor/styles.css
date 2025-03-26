@@ -1,103 +1,103 @@
-/* Reset default margin and padding */
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
+/* Reset margins and paddings */
+html, body {
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
 }
 
-/* Set default background color and text color for dark theme */
-body.dark-mode {
-    background-color: #1a1a1a;
-    color: #fff;
+/* Use a VS Code–like dark theme */
+body {
+    background-color: #1e1e1e;
+    color: #cccccc;
+    font-family: "Segoe WPC", "Segoe UI", sans-serif;
 }
 
-/* Toolbar styles */
+/* Main container covering the entire viewport */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+/* Toolbar styling (similar to a title bar) */
 .toolbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: #949494;
-    color: #fff;
-    padding: 8px;
-    max-width: 100%; /* Ensure toolbar fits the screen */
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    background-color: #333333;
+    padding: 8px 12px;
+    border-bottom: 1px solid #3c3c3c;
 }
 
-.material-button {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
+/* Toolbar button styling (styled like VS Code actions) */
+.toolbar .btn {
+    background-color: #0e639c;
+    border: none;
+    color: #ffffff;
+    padding: 6px 12px;
+    margin-right: 8px;
+    border-radius: 3px;
+    font-size: 0.9rem;
     cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    white-space: nowrap; /* Prevent text wrapping */
+    transition: background-color 0.2s ease;
 }
 
-.material-button:hover {
-    background-color: #ddd;
+.toolbar .btn:hover {
+    background-color: #1177bb;
 }
 
-.material-icon {
-    margin-right: 5px;
-    font-size: 18px; /* Adjust icon size */
-}
-
-.material-text {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px; /* Adjust text size */
-}
-
-/* Editor container styles */
+/* Editor container fills the available space */
 .editor-container {
-    margin-top: 20px;
-    height: calc(100vh - 100px); /* Adjust height to fill available space */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-#editor {
-    height: 100%;
+/* Code editor area styling */
+.code-editor {
+    flex: 1;
     width: 100%;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 16px; /* Adjust font size for code editor */
-    border: 1px solid #ccc;
+    background-color: #1e1e1e;
+    overflow: auto;
+}
+
+/* Custom scrollbar styling for the editor area */
+.code-editor::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.code-editor::-webkit-scrollbar-track {
+    background: #2e2e2e;
+}
+.code-editor::-webkit-scrollbar-thumb {
+    background: #555;
     border-radius: 5px;
-    /* Additional styles for the Ace editor container */
-    line-height: 1.6; /* Adjust line height */
+}
+.code-editor::-webkit-scrollbar-thumb:hover {
+    background: #777;
 }
 
-/* Dark mode adjustments */
-body.dark-mode .toolbar {
-    background-color: #333;
-    color: #fff;
-}
-
-body.dark-mode .material-button {
-    border-color: #555;
-}
-
-body.dark-mode .material-button:hover {
-    background-color: #444;
-}
-
-body.dark-mode #editor {
-    background-color: #2b2b2b; /* Dark background for Ace Editor */
-    color: #f8f8f2; /* Light text for Ace Editor */
-    border-color: #555;
-}
-
-/* Responsive design for smaller screens */
-@media (max-width: 600px) {
-    .material-button {
-        font-size: 12px;
-        padding: 3px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .toolbar {
+        flex-wrap: wrap;
     }
-
-    .material-icon {
-        font-size: 16px;
-    }
-
-    .editor-container {
-        height: calc(100vh - 150px); /* Reduce height for smaller screens */
+    .toolbar .btn {
+        margin-bottom: 5px;
+        width: 100%;
     }
 }
+#editor::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  #editor::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+  #editor::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 4px;
+  }

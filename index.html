@@ -1,67 +1,91 @@
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>HTML Editor PRO - with Ai</title>
-          <meta name="description" content="HTML Editor PRO - with Ai is a powerful HTML editor that includes artificial intelligence features to enhance your coding experience.">
-          <meta name="keywords" content="HTML editor, AI, artificial intelligence, coding, web development">
-          <meta name="HTML Editor PRO - WEB" content="ProTec Games">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Editor PRO - with AI</title>
+  <meta name="description" content="HTML Editor PRO - with AI is a powerful HTML editor that includes artificial intelligence features to enhance your coding experience.">
+  <meta name="keywords" content="HTML editor, AI, artificial intelligence, coding, web development">
+  <meta name="HTML Editor PRO - WEB" content="ProTec Games">
 
-          <!-- Open Graph meta tags for link preview -->
-          <meta property="og:title" content="HTML Editor PRO - with Ai Web">
-          <meta property="og:description" content="HTML Editor PRO - with Ai is a powerful HTML editor that includes artificial intelligence features to enhance your coding experience.">
-          <meta property="og:image" content="/assets/preview.png">
-          <meta property="og:url" content="https://htmleditorpro netlify.app">
-          <meta property="og:type" content="website">
-          <meta property="og: HTML Editor Web" content="HTML Editor PRO - with Ai">
+  <!-- Open Graph meta tags for link preview -->
+  <meta property="og:title" content="HTML Editor PRO - with AI Web">
+  <meta property="og:description" content="HTML Editor PRO - with AI is a powerful HTML editor that includes artificial intelligence features to enhance your coding experience.">
+  <meta property="og:image" content="/assets/preview.png">
+  <meta property="og:url" content="https://htmleditorpro.netlify.app">
+  <meta property="og:type" content="website">
+  <meta property="og:HTML Editor Web" content="HTML Editor PRO - with AI">
 
-          <!-- Twitter Card meta tags for link preview -->
-          <meta name="twitter:card" content="/assets/preview.png">
-          <meta name="twitter:title" content="HTML Editor PRO - with Ai">
-          <meta name="twitter:description" content="HTML Editor PRO - with Ai is a powerful HTML editor that includes artificial intelligence features to enhance your coding experience.">
-          <meta name="twitter:image" content="/assets/preview.png">
+  <!-- Twitter Card meta tags for link preview -->
+  <meta name="twitter:card" content="/assets/preview.png">
+  <meta name="twitter:title" content="HTML Editor PRO - with AI">
+  <meta name="twitter:description" content="HTML Editor PRO - with AI is a powerful HTML editor that includes artificial intelligence features to enhance your coding experience.">
+  <meta name="twitter:image" content="/assets/preview.png">
 
-          <!-- LinkedIn meta tags for link preview -->
-          <meta property="og:title" content="HTML Editor PRO - with Ai">
-          <meta property="og:description" content="HTML Editor PRO - with Ai is a powerful HTML editor that includes artificial intelligence features to enhance your coding experience.">
-          <meta property="og:image" content="/assets/logo.png">
-          <meta property="og:url" content="https://htmleditorpro.netlify.app">
-          <meta property="og:type" content="website">
-          <meta property="og:site_name" content="HTML Editor PRO - with Ai">
+  <!-- LinkedIn meta tags for link preview -->
+  <meta property="og:title" content="HTML Editor PRO - with AI">
+  <meta property="og:description" content="HTML Editor PRO - with AI is a powerful HTML editor that includes artificial intelligence features to enhance your coding experience.">
+  <meta property="og:image" content="/assets/logo.png">
+  <meta property="og:url" content="https://htmleditorpro.netlify.app">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HTML Editor PRO - with AI">
 
-          <link rel="stylesheet" href="styles.css">
-          <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet">
-        </head>
-        <body>
-          <!-- Particle background container -->
-          <div id="particles-js"></div>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Particle background container -->
+  <div id="particles-js"></div>
 
-          <div id="app">
-            <header>
-              <h1>HTML Editor PRO - with Ai</h1>
-            </header>
-            <main>
-              <ul id="fileList"></ul>
-            </main>
-            <button id="fab">+</button>
+  <div id="app">
+    <header>
+      <h1>HTML Editor PRO - with AI</h1>
+      <div class="toolbar">
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Search projects...">
+        </div>
+        <div class="action-buttons">
+          <button id="sortButton">Sort: Name ↑</button>
+          <div id="sortMenu" class="dropdown-menu">
+            <div class="sort-option" data-sort="name-asc">Name ↑</div>
+            <div class="sort-option" data-sort="name-desc">Name ↓</div>
+            <div class="sort-option" data-sort="date-asc">Date ↑</div>
+            <div class="sort-option" data-sort="date-desc">Date ↓</div>
+            <div class="sort-option" data-sort="size-asc">Size ↑</div>
+            <div class="sort-option" data-sort="size-desc">Size ↓</div>
+            <div class="sort-option" data-sort="type-asc">Type ↑</div>
+            <div class="sort-option" data-sort="type-desc">Type ↓</div>
           </div>
+          <button id="viewToggle">Grid View</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div id="projectContainer" class="project-container list-view">
+        <ul id="fileList"></ul>
+      </div>
+    </main>
+    <div class="user-info">
+      <span id="currentUser">PrakharDoneria</span>
+      <span id="currentDate">2025-03-26</span>
+    </div>
+    <button id="fab">+</button>
+  </div>
 
+  <!-- Modal for adding new file -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 style="text-align: center;">Enter file name</h2>
+      <input type="text" id="fileNameInput" placeholder="File name" style="width: calc(100% - 40px); padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+      <div style="text-align: center;">
+        <button id="saveFileBtn" style="background-color: #007acc; color: white; padding: 10px 20px; margin-right: 10px; border: none; border-radius: 5px; cursor: pointer;">Save</button>
+      </div>
+    </div>
+  </div>
 
-          <!-- Modal for adding new file -->
-          <div id="modal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <h2 style="text-align: center;">Enter file name</h2>
-              <input type="text" id="fileNameInput" placeholder="File name" style="width: calc(100% - 40px); padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
-              <div style="text-align: center;">
-                <button id="saveFileBtn" style="background-color: #007acc; color: white; padding: 10px 20px; margin-right: 10px; border: none; border-radius: 5px; cursor: pointer;">Save</button>
-              </div>
-            </div>
-          </div>
-
-          <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-          <!-- JavaScript -->
-          <script src="script.js"></script>
-        </body>
-        </html>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
